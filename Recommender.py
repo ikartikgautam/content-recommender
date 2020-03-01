@@ -9,7 +9,6 @@ users = pd.read_csv("users.csv",header=None)
 uId = ""
 crr_user=-1
 signup = 0
-temp=pd.DataFrame({0:["uIdt"],1:[122],2:["cms"]}) 
 
 #user login
 print("Welcome !!\n")
@@ -27,8 +26,11 @@ if(crr_user==-1):
     signup=int(input("Do you want to make new account?[1/0]"))
     print(signup)
     if (signup==1):
-        temp=pd.DataFrame({0:[uId],1:[122],2:["cms"]}) 
+        bpm=int(input("Enter avg bpm"))
+        artists=input("Enter the artists u like:")
+        temp=pd.DataFrame({0:[uId],1:[bpm],2:[artists]}) 
         users=users.append(temp,ignore_index=True)
+        users.to_csv("users.csv",index=False,header=False)
         print(users)       
 else:
     print("user = ",crr_user)        
